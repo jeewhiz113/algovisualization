@@ -1,3 +1,5 @@
+@import './settings/variables.css';
+
 .App {
   text-align: center;
 }

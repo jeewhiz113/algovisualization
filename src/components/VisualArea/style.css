@@ -1,0 +1,8 @@
+.VisualWindow {
+  width: auto;
+  padding: 0.5rem;
+  margin: 1rem 1rem;
+  box-shadow: var(--box-shadow-2);
+  background-color: var(--background-color-1);
+}
+
