@@ -23,7 +23,7 @@ function App() {
   const [progress, setProgress] = useState(-1);
   const [timeoutIds, setTimeoutIds] = useState(null);
   const currentStep = useRef(-1);
-  //const [currentStep, setCurrentStep] = useState(-1);
+  const [currentStep, setCurrentStep] = useState(-1);
   const runAlgo = ()=>{
     const toIds = [];
     const timer = 500;
