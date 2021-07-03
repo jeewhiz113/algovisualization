@@ -8,20 +8,16 @@
   transition: 0.75s ease-in-out; */
   border: 1px solid;
   display:flex;
+  /* flex-direction:row; */
+  /* align-items: center;  flex-start or end or just stretch */
+  /* flex-direction: column reverse;   */
+  /* All the bars are going to be aligned at the bottom of the page */
+  align-items:flex-end; 
 }
 
-.Chart div{
+/* .Chart div{
   border:1px solid;
-}
-
-.box-1{
-  flex:2
-}
-
-.box-2{
-  flex:1
-}
-
-.box-3{
-  flex:1
-}
+} */
+/* @media(min-width:768px){
+ put containers in here.  Idea here is if width is less, then we get vertical display
+}*/

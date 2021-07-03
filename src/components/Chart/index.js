@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
+import Bar from '../Elements/Bar'
 function Chart(props) {
-  console.log('in Chart', props.array);
-  //const [array, setArray] = useState()
-
-  //Next we try and display the array passed to this component.
+  const generateBars = ()=>{
+    if (!props.visState){
+      return null;
+    }
+    let maxNum = Math.max(...props.visState.array);
+    let array = props.visState.array;
+    return array.map((num, index)=>{
+            let width = 100/array.length;  //what is the function for the width?
+            let height = num / maxNum * 100;
+            let margin = index === array.length ? '0' : width > 3 ? '0.5rem' : '0.125rem';            let stateA = props.visState.stateA.includes(index);
+            let stateB = props.visState.stateB.includes(index);
+            let stateC = props.visState.stateC.includes(index);
+            let stateD = props.visState.stateD.includes(index);
+            let sorted = props.visState.sortedIndexes.includes(index);
+            
+            return (
+              <Bar 
+                key={index} 
+                val={width >=5 ? num : null}
+                width={width}
+                height={height}
+                style= {{marginRight: `${margin}`}}
+                stateA = {stateA}
+                stateB = {stateB}
+                stateC = {stateC}
+                stateD = {stateD}
+                sorted = {sorted}
+              />
+            )
+          })
+  }
   return (
-    // So we implement flex box here, which means Chart is the container and some specific properties go on the boxes themselves.
     <div className = 'Chart'>
-      {/* These below are going to be bars with a className */}
-      <div className='box-1'>Box 1</div>
-      <div className='box-2'>Box 2</div>
-      <div className='box-3'>Box 3</div>
+      {generateBars()}
     </div>
   )
 }

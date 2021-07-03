@@ -1,0 +1,29 @@
+.Bar {
+  display:flex;
+  background-color: var(--white);
+  /* all the content inside each bar align to the bottom of the page */
+  justify-content: center;
+  /* flex-direction:column reverse; */
+  align-items: flex-end;
+  /* margin-right:  */
+}
+
+.Bar_sorted{
+  background-color: var(--primary);
+}
+
+.Bar_stateD{
+  background-color: var(--blue);
+}
+
+.Bar_stateC{
+  background-color: var(--red);
+}
+
+.Bar_stateB{
+  background-color: var(--secondary);
+}
+
+.Bar_stateA{
+  background-color: var(--amber);
+}

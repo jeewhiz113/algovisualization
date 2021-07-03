@@ -17,7 +17,7 @@ export default (props) => {
   const renderSizeOption = () => {
     if (props.sortSelect) {
       return (
-        <NavDropdown  title={"Array Size:  " + props.size} id="basic-nav-dropdown">
+        <NavDropdown className='mr-4' title={"Array Size:  " + props.size} id="basic-nav-dropdown">
           <NavDropdown.Item data-number={10} onClick = {setNumber} >10</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item data-number={20} onClick = {setNumber} >20</NavDropdown.Item>
@@ -53,17 +53,17 @@ export default (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <NavDropdown className='mr-4' onClick={setSort} title="Sorting Algos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Bubble </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.1">Bubble </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.2">Selection </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.2">Selection </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">Insertion </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.3">Insertion </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Merge </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.4">Merge </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.5">Quick </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.5">Quick </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.6">Heap </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.6">Heap </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown className='mr-4' onClick={setSearch} title="Seaching Algos" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Breadth-First-Search</NavDropdown.Item>

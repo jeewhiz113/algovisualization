@@ -1,0 +1,30 @@
+.Info{
+  text-align:left;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+   /* border-top:solid 0.1rem; */
+   max-width: 1200px;
+}
+
+.InfoBody{
+  /* flex-flow row and wrap, wraps the complexity class down */
+  display:flex;
+  /* justify-content: center; */
+  flex-wrap:wrap; 
+  
+}
+
+.Description{
+  /* What is ch? */
+  flex-basis:60%;
+  /* width:50ch; */
+  min-width:580px;
+  padding-right: 5ch;
+}
+.Complexity{
+  flex-basis:40%;
+  /* width: 40ch; */
+  padding-left: 5%;
+  border-left: solid .25px
+}
