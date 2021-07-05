@@ -21,22 +21,30 @@ function App() {
   const [selectedAlgo, setSelectedAlgo] = useState(null);
   const [algoActions, setAlgoActions] = useState(null);
   const [progress, setProgress] = useState(-1);
-  const [timeoutIds, setTimeoutIds] = useState(null);
+  const [timeoutIds, setTimeoutIds] = useState([]);
+  const [speed, setSpeed] = useState(1)
   const currentStep = useRef(-1);
-  const [currentStep, setCurrentStep] = useState(-1);
-  const runAlgo = ()=>{
+  // const [currentStep, setCurrentStep] = useState(-1);
+  //Make this function take the state and when called, pass it algoActions
+  const runAlgo = (state)=>{  
     const toIds = [];
-    const timer = 500;
-    let length = algoActions.length;
-    algoActions.forEach((item, i)=>{
+    const timer = 500/speed;
+    let length = state.length;
+    state.forEach((item, i)=>{
       let timeoutId = setTimeout(()=>{
         setVisState(item);
-        setProgress(((i+1)/length)*100);
+        
         currentStep.current = currentStep.current+1;
-        console.log(currentStep)
-      }, 500*i)
+        setProgress(((currentStep.current+1)/length)*100);
+        //console.log(currentStep)
+      }, timer*i)
       toIds.push(timeoutId);
-    })
+    });
+    //clear timeoutIds at the end, so we know we are finished.
+    let timeoutId = setTimeout(()=>{
+      pause();  //clear the timeout array
+    }, length*timer)
+    toIds.push(timeoutId);
     setTimeoutIds(toIds);
    // console.log(currentStep.current);
   }
@@ -44,12 +52,14 @@ function App() {
     timeoutIds.forEach((id) =>{
       clearTimeout(id);
     })
-    setTimeoutIds(null);
+    
+    setTimeoutIds([]);
   }
   const resume = ()=>{
-    setAlgoActions(algoActions.slice(currentStep.current));
-    currentStep.current = -1;
-    runAlgo();
+    // setAlgoActions(algoActions.slice(currentStep.current));
+    let newState = algoActions.slice(currentStep.current);
+    //currentStep.current = -1;
+    runAlgo(newState);
   }
   const setSortTrue = () => {
     setSelectedSort(true);
@@ -65,28 +75,42 @@ function App() {
     })
     return array;
   }
-  const algoSelect = (e) => {  //this will only be responsible for selecting the algo as a string
+  const algoSelect = (e) => {
     setSelectedAlgo(e.target.innerText);
-    
     let state = SelectionSort(generateArray(size))
     setAlgoActions(state);
     setVisState(state[0]);
   }
+  const repeat = ()=>{
+    timeoutIds.forEach((id)=>{
+      clearTimeout(id);
+    });
+    currentStep.current = -1;
+    runAlgo(algoActions)
+  }
+  const speedSelect = (e) => {
+    console.log(parseFloat(e.target.innerText.slice(0, -1)));
+    setSpeed(parseFloat(e.target.innerText.slice(0, -1)));
+  }
   useEffect(()=>{
-    //Ok so once the algo has been selected, generate the state with that algo and chosen size.  If no algo was selected (So like the initial boot up of the program), then display a message that directs the user to select an aglo.  This is also useful for generating the color keys.  If  
-    // let state = SelectionSort(generateArray(size));  
-    // setAlgoActions(state);
-    //setVisState(state[0]);
     console.log('Algo selected is', selectedAlgo)
   }, [size, selectedAlgo])
   const colorKey = ALGO_KEY[selectedAlgo];
-  //console.log(colorKey);
   return (
     <div className="App">
       <Navbar fixed="top" selectedAlgo={algoSelect} size={size} sortSelect={selectedSort} searchSelect={selectedSearch} setSize={setSize} setSort={setSortTrue} setSearch={setSearchTrue} />
         <VisualArea data = {visState} progress = {progress}/>
-        {/* IDea: pass a playing variable to this component that returns if timeoutIds's length is greater than 1.  If it is, then that means we are playing the visualization.  Then in the component, if playing is true, then display the pause button, otherwise display the play button.  ***Problem is once paused, the timeoutIds becomes null ||||| SIMPLY USE CURRENTSTEP, if not 0 || -1 then run continue*/}
-        <Controls playing = {algoActions ? algoActions.length > 0 : false} play = {runAlgo} resume={resume} pause={pause}/>
+        <Controls 
+        currentSpeed = {speed} 
+        speedSelect = {speedSelect} 
+        repeat = {repeat} 
+        playing = {timeoutIds ? timeoutIds.length > 0 : false} 
+        play = {()=>{runAlgo(algoActions)}} 
+        resume={resume} 
+        pause={pause} step = {currentStep.current}
+        playDisabled ={algoActions ? algoActions.length <= 0 || currentStep.current >= algoActions.length - 1 : true
+        }
+        />
         <ColorKey colorKey={colorKey}/>
       <RenderAlgoInfo selectedAlgo={selectedAlgo}/>
       
