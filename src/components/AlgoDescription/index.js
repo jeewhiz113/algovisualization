@@ -205,82 +205,13 @@ export default function RenderAlgoInfo(props) {
         return (<h1>Please select an algorithm</h1>)
     }
     
-  }
-
-  const renderCodePicture = ()=>{
-    //Fix the hr tag to be in a centered div.
-    switch (props.selectedAlgo) {
-      case 'Quick':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Quick Sort</h1>
-          </div>
-          
-        )
-      case 'Insertion':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Insertion Sort</h1>
-          </div>
-          
-        )
-      case 'Selection':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Selection Sort</h1>
-          </div>
-          
-        )
-      case 'Merge':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Merge Sort</h1>
-          </div>
-          
-        )
-      case 'Bubble':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Bubble Sort</h1>
-          </div>
-          
-        )
-      case 'Heap':
-        return (
-          <div>
-            <hr />
-            <h1>Show Code for Heap Sort</h1>
-          </div>
-          
-        )
-      default:
-        return null
-    }
-  }
-    
+  }   
   return (
     <div>
       {render()}
-      {renderCodePicture()}
+      
     </div>
     
   )
 }
-
-/*
-// <div>
-        //   <h3>Partition Code:</h3>
-        //   <img src={qs1} alt="partition step"/>
-        //   <h3>Divide and Conquer Code:</h3>
-        //   <img src={qs2} alt="divide and conquer step"/>
-        // </div>
-
-*/
-
-
 

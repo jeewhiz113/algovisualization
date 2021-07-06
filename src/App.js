@@ -8,6 +8,7 @@ import Controls from './components/Elements/Controls'
 import RenderAlgoInfo from './components/AlgoDescription'
 import SelectionSort, { SelectionSortKey } from './algorithms/SelectionSort'
 import ColorKey from './components/Elements/ColorKey'
+import DisplayCode from './components/AlgoCodeBlocks'
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   const runAlgo = (state)=>{  
     const toIds = [];
     const timer = 500/speed;
-    let length = state.length;
+    let length = algoActions.length;
     state.forEach((item, i)=>{
       let timeoutId = setTimeout(()=>{
         setVisState(item);
@@ -52,15 +53,30 @@ function App() {
     timeoutIds.forEach((id) =>{
       clearTimeout(id);
     })
-    
     setTimeoutIds([]);
   }
   const resume = ()=>{
-    // setAlgoActions(algoActions.slice(currentStep.current));
     let newState = algoActions.slice(currentStep.current);
-    //currentStep.current = -1;
     runAlgo(newState);
   }
+  const stepForward = () =>{
+    if (currentStep.current < algoActions.length-1){
+      currentStep.current = currentStep.current + 1;
+      setVisState(algoActions[currentStep.current])
+    }
+    let length = algoActions.length;
+    //currentStep.current = currentStep.current + 1;
+    setProgress(((currentStep.current+1)/length)*100);
+  }
+  const stepBackward = ()=>{
+    if (currentStep.current > 0 && currentStep.current < algoActions.length -1){
+      currentStep.current = currentStep.current-1;
+      setVisState(algoActions[currentStep.current])
+    }
+    let length = algoActions.length;
+    setProgress(((currentStep.current-1)/length)*100);
+  }
+  //code up adjustPlaybackSpeed
   const setSortTrue = () => {
     setSelectedSort(true);
     setSelectedSearch(false);
@@ -89,7 +105,6 @@ function App() {
     runAlgo(algoActions)
   }
   const speedSelect = (e) => {
-    console.log(parseFloat(e.target.innerText.slice(0, -1)));
     setSpeed(parseFloat(e.target.innerText.slice(0, -1)));
   }
   useEffect(()=>{
@@ -102,19 +117,24 @@ function App() {
         <VisualArea data = {visState} progress = {progress}/>
         <Controls 
         currentSpeed = {speed} 
+        speedSelectStatus = {currentStep.current >=0}
         speedSelect = {speedSelect} 
         repeat = {repeat} 
         playing = {timeoutIds ? timeoutIds.length > 0 : false} 
         play = {()=>{runAlgo(algoActions)}} 
         resume={resume} 
         pause={pause} step = {currentStep.current}
-        playDisabled ={algoActions ? algoActions.length <= 0 || currentStep.current >= algoActions.length - 1 : true
-        }
+        playDisabled ={algoActions ? algoActions.length <= 0 || currentStep.current >= algoActions.length - 1 : true}
+        forward = {stepForward}
+        backward = {stepBackward}
+        forwardStatus = {algoActions ? currentStep.current < algoActions.length-1 : false}
+        backwardStatus = {algoActions ? currentStep.current > 0 && currentStep.current < algoActions.length-1 : false }
+        pickedAlgo = {selectedAlgo ? true : false}
         />
         <ColorKey colorKey={colorKey}/>
       <RenderAlgoInfo selectedAlgo={selectedAlgo}/>
       
-
+      <DisplayCode selectedAlgo={selectedAlgo} />
       <div>Footer Here</div>
     </div>
   );

@@ -10,10 +10,9 @@ import {
 import './style.css'
 
 export default function Controls(props) {
-  
-  const playOrResume = (e) =>{
-    // console.log(e.target.attributes.getNamedItem('disabled'));
-    // console.log(e.target.className);
+  console.log('forward status', props.forwardStatus)
+  console.log('backward status', props.backwardStatus)
+  const playOrResume = () =>{
     if (props.playDisabled){
       return;
     }else if (props.step === -1){
@@ -21,13 +20,6 @@ export default function Controls(props) {
     }else {
       props.resume();
     }
-    // if (props.step === -1){
-    //   console.log('calling play here!!!!!!')
-    //   props.play()
-    // }else {
-    //   console.log('calling resume in controls')
-    //   props.resume();
-    // }
   }
   const pauseVis = ()=>{
     props.pause();
@@ -39,27 +31,82 @@ export default function Controls(props) {
       return 'enabled'
     }
   }
-  
+  const forwardStatus = ()=>{
+    if (props.forwardStatus){
+      return 'enabled';
+    }else {
+      return 'disabled';
+    }
+  }
+  const backwardStatus = ()=>{
+    if (props.backwardStatus){
+      return 'enabled';
+    }else {
+      return 'disabled';
+    }
+  }
+  const forward = ()=>{
+    if (props.forwardStatus){
+      props.forward()
+    }else {
+      return;
+    }
+  }
+  const backward = ()=>{
+    if (props.backwardStatus){
+      props.backward()
+    }else {
+      return;
+    }
+  }
+  const speedSelectStat = ()=>{
+    if (props.speedSelectStatus){
+      //disable it!
+      return 'disabled';
+    }else {
+      return 'enabled';
+    }
+  }
+
+  const selectSpeed = (e) =>{
+    if (speedSelectStat() === 'disabled'){
+      return;
+    }else {
+      props.speedSelect(e);
+    }
+  }
+
+  const repeatStatus = ()=>{
+    if (props.pickedAlgo){
+      return 'enabled'
+    }else {
+      return 'disabled'
+    }
+  }
+  const repeat = ()=>{
+    if (props.pickedAlgo){
+      props.repeat();
+    }else {
+      return;
+    }
+  }
   return (
     <div className="VisControls">
-      <Repeat onClick = {()=>{props.repeat()}} className="button repeat-button"/>
-      <Previous className="button increment-button"/>
+      <Repeat onClick = {repeat} className={`button repeat-button repeat-button-${repeatStatus()}`}/>
+      <Previous onClick={backward} className={`button increment-button backward-${backwardStatus()}`}/>
       {props.playing ? <Pause onClick = {pauseVis}color="#ff94c2" className="button"/> : <Play onClick = {playOrResume} className = {`button button-${buttonStatus()}`}/>}
-      <Next className="button increment-button"/>
+      <Next onClick={forward} className={`button increment-button forward-${forwardStatus()}`}/>
       <div className="dropdown">
-        <button className="dropbtn">{props.currentSpeed}x</button>
+        <button className={`dropbtn dropbtn-${speedSelectStat()}`}>{props.currentSpeed}x</button>
         <div className="dropdown-content">
-          <a onClick = {(e)=>{props.speedSelect(e)}}>0.25x</a>
-          <a onClick = {(e)=>{props.speedSelect(e)}}>0.5x</a>
-          <a onClick = {(e)=>{props.speedSelect(e)}}>1x</a>
-          <a onClick = {(e)=>{props.speedSelect(e)}}>2x</a>
-          <a onClick = {(e)=>{props.speedSelect(e)}}>4x</a>
+          <a onClick = {selectSpeed}>0.25x</a>
+          <a onClick = {selectSpeed}>0.5x</a>
+          <a onClick = {selectSpeed}>1x</a>
+          <a onClick = {selectSpeed}>2x</a>
+          <a onClick = {selectSpeed}>4x</a>
         </div>
       </div>
       
     </div>
   )
 }
-
-
-//className="button button-play"

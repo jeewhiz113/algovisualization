@@ -12,13 +12,21 @@
   height:1rem;
   width:1rem
 }
+.repeat-button-disabled {
+  color: var(--gray-500);
+}
 .button-disabled {
   color: var(--gray-500);
 } 
 .button-enabled{
   color:green;
 }
-
+.backward-disabled {
+  color: var(--gray-500);
+}
+.forward-disabled {
+  color: var(--gray-500);
+}
 .increment-button{
   height:2rem;
   width:2rem
@@ -29,6 +37,9 @@
   padding: 0.1rem;
   font-size: 0.9rem;
   border: none;
+}
+.dropbtn-disabled{
+  color: var(--gray-500);
 }
 .dropdown {
   position: relative;

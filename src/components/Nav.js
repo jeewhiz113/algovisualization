@@ -53,26 +53,26 @@ export default (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <NavDropdown className='mr-4' onClick={setSort} title="Sorting Algos" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.1">Bubble </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Bubble </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.2">Selection </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Selection </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.3">Insertion </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Insertion </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.4">Merge </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Merge </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.5">Quick </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Quick </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick = {props.selectedAlgo} href="#action/3.6">Heap </NavDropdown.Item>
+              <NavDropdown.Item onClick = {props.selectedAlgo} >Heap </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown className='mr-4' onClick={setSearch} title="Seaching Algos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Breadth-First-Search</NavDropdown.Item>
+              <NavDropdown.Item >Breadth-First-Search</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.2">Depth-First-Search</NavDropdown.Item>
+              <NavDropdown.Item >Depth-First-Search</NavDropdown.Item>
               
             </NavDropdown>
             {renderSizeOption()}
-            <Nav.Link className='mr-4' href="#link">Topological </Nav.Link>
+            <Nav.Link className='mr-4'>Topological </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
