@@ -7,6 +7,9 @@ import VisualArea from './components/VisualArea'
 import Controls from './components/Elements/Controls'
 import RenderAlgoInfo from './components/AlgoDescription'
 import SelectionSort, { SelectionSortKey } from './algorithms/SelectionSort'
+import InsertionSort from './algorithms/InsertionSort'
+import QuickSort from './algorithms/QuickSort'
+import BubbleSort from './algorithms/BubbleSort'
 import ColorKey from './components/Elements/ColorKey'
 import DisplayCode from './components/AlgoCodeBlocks'
 
@@ -93,7 +96,22 @@ function App() {
   }
   const algoSelect = (e) => {
     setSelectedAlgo(e.target.innerText);
-    let state = SelectionSort(generateArray(size))
+    // let state = SelectionSort(generateArray(size))
+    let state;
+    switch (e.target.innerText){
+      case 'Selection':
+        state = SelectionSort(generateArray(size));
+        break;
+      case 'Insertion':
+        state = InsertionSort(generateArray(size));
+        break;
+      case 'Bubble':
+        state = BubbleSort(generateArray(size));
+        break;
+      case 'Quick':
+        state = QuickSort(generateArray(size));
+        break;
+    }
     setAlgoActions(state);
     setVisState(state[0]);
   }

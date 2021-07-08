@@ -1,8 +1,7 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 import './style.css';
-import qs1 from './CodeScreenshots/quicksort1.png';
-import qs2 from './CodeScreenshots/quicksort2.png'
+
 
 export default function RenderAlgoInfo(props) {
   console.log(props)

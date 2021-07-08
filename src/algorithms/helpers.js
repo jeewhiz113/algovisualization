@@ -37,7 +37,9 @@ export const swap = (array, i, j)=>{
 export const lastSorted = (state) =>{
   return state[state.length-1].sortedIndexes;  //last element in state and the sortedIndexes property (we retrieve the entire array)
 }
-
+export const createRange = ()=>{
+  console.log('somestuffhere')
+}
 export const createKey = (stateA, stateB, stateC, stateD)=>{
   return { stateA, stateB, stateC, stateD }
 }
