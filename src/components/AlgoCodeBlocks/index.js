@@ -1,7 +1,10 @@
 import React from 'react'
-import SelectionSort from '../../algorithms/SelectionSort'
 import SelectionSortCode from './SelectionSort'
 import InsertionSortCode from './InsertionSortCode'
+import BubbleSortCode from './BubbleSortCode'
+import QuickSortCode from './QuickSortCode'
+import MergeSortCode from './MergeSortCode'
+import HeapSortCode from './HeapSortCode'
 
 function DisplayCode(props) {
   console.log('In displaycode', props.selectedAlgo)
@@ -11,8 +14,7 @@ function DisplayCode(props) {
       case 'Quick':
         return (
           <div>
-            <hr />
-            <h1>Show Code for Quick Sort</h1>
+            <QuickSortCode />
           </div>
           
         )
@@ -34,16 +36,14 @@ function DisplayCode(props) {
       case 'Merge':
         return (
           <div>
-            <hr />
-            <h1>Show Code for Merge Sort</h1>
+            <HeapSortCode />
           </div>
           
         )
       case 'Bubble':
         return (
           <div>
-            <hr />
-            <h1>Show Code for Bubble Sort</h1>
+            <BubbleSortCode />
           </div>
           
         )

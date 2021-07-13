@@ -13,25 +13,24 @@ function SelectionSortCode() {
       <pre>
         <code className="language-javascript">
             {
-            `function selectionSort(arr,  n)  //arr is the unsorted array and n is its length
+            `function selectionSort(arr) 
+{
+  for (var i = 0; i < arr.length; i++)
   {
-      var i, j, min_idx;
-  
-      // One by one move boundary of unsorted subarray
-      for (i = 0; i < n-1; i++)
-      {
-          // Find the minimum element in unsorted array
-          min_idx = i;
-          for (j = i + 1; j < n; j++){
-            if (arr[j] < arr[min_idx]){  //update min_idx if a smaller value is found
-              min_idx = j;  
-            }
-          }
-          // Swap the found minimum element with the first element
-          swap(arr,min_idx, i);
+    let minIndex = i;
+    for (var j = i+1; j < arr.length; j++){
+      //find the minIndex for each iteration
+      if (arr[j] < arr[minIndex]){
+        minIndex = j;
       }
-  }`
+    }
+    //switch the current i value with the value in the minIndex
+    let temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
   }
+}`
+          }
         </code>
       </pre>
     </div>

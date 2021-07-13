@@ -28,8 +28,6 @@ function App() {
   const [timeoutIds, setTimeoutIds] = useState([]);
   const [speed, setSpeed] = useState(1)
   const currentStep = useRef(-1);
-  // const [currentStep, setCurrentStep] = useState(-1);
-  //Make this function take the state and when called, pass it algoActions
   const runAlgo = (state)=>{  
     const toIds = [];
     const timer = 500/speed;

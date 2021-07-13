@@ -35,3 +35,11 @@
 .ColorKey_StateB {
   background-color: var(--secondary);
 }
+
+.ColorKey_StateC {
+  background-color: var(--red);
+}
+
+.ColorKey_StateD {
+  background-color: var(--blue);
+}
