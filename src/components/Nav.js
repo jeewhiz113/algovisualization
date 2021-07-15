@@ -7,11 +7,11 @@ export default (props) => {
     props.setSize(parseInt(e.target.dataset.number));
   }
   const setSort = ()=>{
-    props.setSize(10);
+    //props.setSize(10);
     props.setSort();
   }
   const setSearch = ()=>{
-    props.setSize(50);
+    //props.setSize(50);
     props.setSearch();
   }
   const renderSizeOption = () => {

@@ -5,9 +5,10 @@ import BubbleSortCode from './BubbleSortCode'
 import QuickSortCode from './QuickSortCode'
 import MergeSortCode from './MergeSortCode'
 import HeapSortCode from './HeapSortCode'
+import HeapSort from '../../algorithms/HeapSort'
 
 function DisplayCode(props) {
-  console.log('In displaycode', props.selectedAlgo)
+  console.log('In displayCode componenet', props);
   const renderCode = ()=>{
     //Fix the hr tag to be in a centered div.
     switch (props.selectedAlgo) {
@@ -50,8 +51,7 @@ function DisplayCode(props) {
       case 'Heap':
         return (
           <div>
-            <hr />
-            <h1>Show Code for Heap Sort</h1>
+            <HeapSortCode />
           </div>
           
         )

@@ -10,6 +10,7 @@ import SelectionSort, { SelectionSortKey } from './algorithms/SelectionSort'
 import InsertionSort from './algorithms/InsertionSort'
 import QuickSort from './algorithms/QuickSort'
 import BubbleSort from './algorithms/BubbleSort'
+import HeapSort from './algorithms/HeapSort'
 import ColorKey from './components/Elements/ColorKey'
 import DisplayCode from './components/AlgoCodeBlocks'
 
@@ -94,24 +95,6 @@ function App() {
   }
   const algoSelect = (e) => {
     setSelectedAlgo(e.target.innerText);
-    // let state = SelectionSort(generateArray(size))
-    let state;
-    switch (e.target.innerText){
-      case 'Selection':
-        state = SelectionSort(generateArray(size));
-        break;
-      case 'Insertion':
-        state = InsertionSort(generateArray(size));
-        break;
-      case 'Bubble':
-        state = BubbleSort(generateArray(size));
-        break;
-      case 'Quick':
-        state = QuickSort(generateArray(size));
-        break;
-    }
-    setAlgoActions(state);
-    setVisState(state[0]);
   }
   const repeat = ()=>{
     timeoutIds.forEach((id)=>{
@@ -124,7 +107,31 @@ function App() {
     setSpeed(parseFloat(e.target.innerText.slice(0, -1)));
   }
   useEffect(()=>{
-    console.log('Algo selected is', selectedAlgo)
+    //******IDEA, generate the array based on selectedAlgo and size here, not from algoSelect or other functions, but here! */
+    console.log('Algo selected is', selectedAlgo);
+    console.log('size selected is ', size)
+    let state;
+    if (selectedAlgo){
+      switch (selectedAlgo){
+        case 'Selection':
+          state = SelectionSort(generateArray(size));
+          break;
+        case 'Insertion':
+          state = InsertionSort(generateArray(size));
+          break;
+        case 'Bubble':
+          state = BubbleSort(generateArray(size));
+          break;
+        case 'Quick':
+          state = QuickSort(generateArray(size));
+          break;
+        case 'Heap':
+          state = HeapSort(generateArray(size));
+          break;
+      }
+      setAlgoActions(state);
+      setVisState(state[0]);
+    }
   }, [size, selectedAlgo])
   const colorKey = ALGO_KEY[selectedAlgo];
   return (
