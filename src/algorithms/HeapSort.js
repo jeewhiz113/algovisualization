@@ -55,4 +55,11 @@ function HeapSort(array) {
   return state;
 }
 
+export const HeapSortKey = createKey(
+  'Comparing',
+  'Swapping',
+  null,
+  'Heap Built'
+);
+
 export default HeapSort

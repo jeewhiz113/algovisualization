@@ -7,49 +7,53 @@ import VisualArea from './components/VisualArea'
 import Controls from './components/Elements/Controls'
 import RenderAlgoInfo from './components/AlgoDescription'
 import SelectionSort, { SelectionSortKey } from './algorithms/SelectionSort'
-import InsertionSort from './algorithms/InsertionSort'
-import QuickSort from './algorithms/QuickSort'
-import BubbleSort from './algorithms/BubbleSort'
-import HeapSort from './algorithms/HeapSort'
+import InsertionSort, { InsertionSortKey } from './algorithms/InsertionSort'
+import QuickSort, { QuickSortKey } from './algorithms/QuickSort'
+import BubbleSort, { BubbleSortKey } from './algorithms/BubbleSort'
+import HeapSort, { HeapSortKey } from './algorithms/HeapSort'
+import MergeSort, { MergeSortKey } from './algorithms/MergeSort'
 import ColorKey from './components/Elements/ColorKey'
 import DisplayCode from './components/AlgoCodeBlocks'
 
 
 function App() {
   const ALGO_KEY = {
-    'Selection': SelectionSortKey
+    'Selection': SelectionSortKey,
+    'Quick': QuickSortKey,
+    'Merge': MergeSortKey,
+    'Heap': HeapSortKey,
+    'Insertion': InsertionSortKey,
+    'Bubble': BubbleSortKey
   }
   const [selectedSort, setSelectedSort] = useState(true);
-  const [selectedSearch, setSelectedSearch] = useState(false)
+  // const [selectedSearch, setSelectedSearch] = useState(false)
   const [size, setSize] = useState(10);
   const [visState, setVisState] = useState(null);
   const [selectedAlgo, setSelectedAlgo] = useState(null);
   const [algoActions, setAlgoActions] = useState(null);
-  const [progress, setProgress] = useState(-1);
+  const [progress, setProgress] = useState(0);
   const [timeoutIds, setTimeoutIds] = useState([]);
   const [speed, setSpeed] = useState(1)
   const currentStep = useRef(-1);
+  console.log('here is algo actions', algoActions)
   const runAlgo = (state)=>{  
     const toIds = [];
     const timer = 500/speed;
-    let length = algoActions.length;
+    let length = state.length;
     state.forEach((item, i)=>{
       let timeoutId = setTimeout(()=>{
         setVisState(item);
-        
         currentStep.current = currentStep.current+1;
         setProgress(((currentStep.current+1)/length)*100);
-        //console.log(currentStep)
       }, timer*i)
       toIds.push(timeoutId);
     });
-    //clear timeoutIds at the end, so we know we are finished.
     let timeoutId = setTimeout(()=>{
-      pause();  //clear the timeout array
+      pause();  
     }, length*timer)
     toIds.push(timeoutId);
     setTimeoutIds(toIds);
-   // console.log(currentStep.current);
+   
   }
   const pause = () =>{
     timeoutIds.forEach((id) =>{
@@ -67,7 +71,6 @@ function App() {
       setVisState(algoActions[currentStep.current])
     }
     let length = algoActions.length;
-    //currentStep.current = currentStep.current + 1;
     setProgress(((currentStep.current+1)/length)*100);
   }
   const stepBackward = ()=>{
@@ -78,15 +81,14 @@ function App() {
     let length = algoActions.length;
     setProgress(((currentStep.current-1)/length)*100);
   }
-  //code up adjustPlaybackSpeed
   const setSortTrue = () => {
     setSelectedSort(true);
-    setSelectedSearch(false);
+    // setSelectedSearch(false);
   }
-  const setSearchTrue = () => {
-    setSelectedSearch(true);
-    setSelectedSort(false);
-  }
+  // const setSearchTrue = () => {
+  //   // setSelectedSearch(true);
+  //   setSelectedSort(false);
+  // }
   const generateArray = (size) => {
     const array = Array(size).fill(0).map(() => {
       return Math.floor(Math.random() * 5 * size) + 1;
@@ -95,6 +97,9 @@ function App() {
   }
   const algoSelect = (e) => {
     setSelectedAlgo(e.target.innerText);
+    pause();
+    currentStep.current = -1;
+    setProgress(0);
   }
   const repeat = ()=>{
     timeoutIds.forEach((id)=>{
@@ -107,9 +112,6 @@ function App() {
     setSpeed(parseFloat(e.target.innerText.slice(0, -1)));
   }
   useEffect(()=>{
-    //******IDEA, generate the array based on selectedAlgo and size here, not from algoSelect or other functions, but here! */
-    console.log('Algo selected is', selectedAlgo);
-    console.log('size selected is ', size)
     let state;
     if (selectedAlgo){
       switch (selectedAlgo){
@@ -128,6 +130,9 @@ function App() {
         case 'Heap':
           state = HeapSort(generateArray(size));
           break;
+        case 'Merge':
+          state = MergeSort(generateArray(size));
+          break;
       }
       setAlgoActions(state);
       setVisState(state[0]);
@@ -136,29 +141,29 @@ function App() {
   const colorKey = ALGO_KEY[selectedAlgo];
   return (
     <div className="App">
-      <Navbar fixed="top" selectedAlgo={algoSelect} size={size} sortSelect={selectedSort} searchSelect={selectedSearch} setSize={setSize} setSort={setSortTrue} setSearch={setSearchTrue} />
-        <VisualArea data = {visState} progress = {progress}/>
-        <Controls 
-        currentSpeed = {speed} 
-        speedSelectStatus = {currentStep.current >=0}
-        speedSelect = {speedSelect} 
-        repeat = {repeat} 
-        playing = {timeoutIds ? timeoutIds.length > 0 : false} 
-        play = {()=>{runAlgo(algoActions)}} 
-        resume={resume} 
-        pause={pause} step = {currentStep.current}
-        playDisabled ={algoActions ? algoActions.length <= 0 || currentStep.current >= algoActions.length - 1 : true}
-        forward = {stepForward}
-        backward = {stepBackward}
-        forwardStatus = {algoActions ? currentStep.current < algoActions.length-1 : false}
-        backwardStatus = {algoActions ? currentStep.current > 0 && currentStep.current < algoActions.length-1 : false }
-        pickedAlgo = {selectedAlgo ? true : false}
-        />
-        <ColorKey colorKey={colorKey}/>
+      <Navbar fixed="top" selectedAlgo={algoSelect} size={size} sortSelect={selectedSort} setSize={setSize} setSort={setSortTrue} />
+      <VisualArea data = {visState} progress = {progress}/>
+      <Controls 
+      currentSpeed = {speed} 
+      speedSelectStatus = {currentStep.current >=0}
+      speedSelect = {speedSelect} 
+      repeat = {repeat} 
+      playing = {timeoutIds ? timeoutIds.length > 0 : false} 
+      play = {()=>{runAlgo(algoActions)}} 
+      resume={resume} 
+      pause={pause} step = {currentStep.current}
+      playDisabled ={algoActions ? algoActions.length <= 0 || currentStep.current >= algoActions.length - 1 : true}
+      forward = {stepForward}
+      backward = {stepBackward}
+      forwardStatus = {algoActions ? currentStep.current < algoActions.length-1 : false}
+      backwardStatus = {algoActions ? currentStep.current > 0 && currentStep.current < algoActions.length-1 : false }
+      pickedAlgo = {selectedAlgo ? true : false}
+      />
+      <ColorKey colorKey={colorKey}/>
       <RenderAlgoInfo selectedAlgo={selectedAlgo}/>
       
       <DisplayCode selectedAlgo={selectedAlgo} />
-      <div>Footer Here</div>
+
     </div>
   );
 }

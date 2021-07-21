@@ -19,4 +19,6 @@ function BubbleSort(array) {
   return state;
 }
 
+export const BubbleSortKey = createKey('Comparing', 'Swapping');
+
 export default BubbleSort

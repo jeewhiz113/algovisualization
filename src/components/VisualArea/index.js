@@ -4,7 +4,7 @@ import Chart from '../Chart'
 import Controls from '../Elements/Controls'
 import ProgressBar from '../Elements/ProgressBar'
 function VisualArea(props) {
-  //console.log('props in VisualArea', props.data);
+  console.log('props in VisualArea', props.data);
   return (
     <div className='VisualWindow'>
       <Chart visState={props.data} />

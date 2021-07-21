@@ -10,12 +10,10 @@ import {
 import './style.css'
 
 export default function Controls(props) {
-  console.log('forward status', props.forwardStatus)
-  console.log('backward status', props.backwardStatus)
   const playOrResume = () =>{
     if (props.playDisabled){
       return;
-    }else if (props.step === -1){
+    }else if (props.step === -1){  //Hmm maybe here
       props.play()
     }else {
       props.resume();

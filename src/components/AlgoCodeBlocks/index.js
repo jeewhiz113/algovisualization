@@ -8,7 +8,6 @@ import HeapSortCode from './HeapSortCode'
 import HeapSort from '../../algorithms/HeapSort'
 
 function DisplayCode(props) {
-  console.log('In displayCode componenet', props);
   const renderCode = ()=>{
     //Fix the hr tag to be in a centered div.
     switch (props.selectedAlgo) {
@@ -29,7 +28,6 @@ function DisplayCode(props) {
       case 'Selection':
         return (
           <div>
-            
             <SelectionSortCode />
           </div>
           
@@ -37,7 +35,7 @@ function DisplayCode(props) {
       case 'Merge':
         return (
           <div>
-            <HeapSortCode />
+            <MergeSortCode />
           </div>
           
         )

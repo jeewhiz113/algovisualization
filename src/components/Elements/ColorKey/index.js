@@ -27,14 +27,16 @@ export default function ColorKey(props) {
 
   const keyC = stateC ? (<div className="ColorKey_Item">
   <div className="ColorKey_Box ColorKey_StateC">
-    <span>{stateC}</span>
   </div>
+  <span>{stateC}</span>
+  
   </div>) : null;
 
   const keyD = stateD ? (<div className="ColorKey_Item">
   <div className="ColorKey_Box ColorKey_StateD">
-    <span>{stateD}</span>
   </div>
+    <span>{stateD}</span>
+  
   </div>) : null;
 
   return (

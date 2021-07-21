@@ -45,4 +45,12 @@ function QuickSort(array) {
   return state;
 
 }
+
+export const QuickSortKey = createKey(
+  'Comparing',
+  'Swapping',
+  null,
+  'Less than pivot'
+);
+
 export default QuickSort

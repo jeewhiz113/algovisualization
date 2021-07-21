@@ -26,4 +26,10 @@ const InsertionSort = (array) => {
   return state;
 }
 
+export const InsertionSortKey = createKey(
+  'Comparing',
+  'Swapping',
+  'Overwrite from memory'
+);
+
 export default InsertionSort
