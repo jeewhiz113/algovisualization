@@ -6,7 +6,6 @@ export default (props) => {
     props.setSize(parseInt(e.target.dataset.number));
   }
   const setSort = ()=>{
-    //props.setSize(10);
     props.setSort();
   }
   const renderSizeOption = () => {

@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Sort Visualizer
+
+This is a web app built using React and is used to visualize classic sorting algorithms such as insertion sort, merge sort, quick sort, heap sort, etc.
+
+This app is deployed with Github and can be accessed [here](https://sort-visualizer.ramizrahman.com).
+
+## Purpose
+
+I wish to gain better understanding of React and the classic sorting algorithms.In the end, this project was a great way to achieve both objectives at the same time.
+
+## Installation
+
+The app is already deployed so you can play around with the final product using this [link](https://sort-visualizer.ramizrahman.com).
+
+If you wish to run this app locally, clone this repo and install the dependencies.
+
+```
+$ git clone "https://github.com/ramiz-rahman/sort-visualizer.git" (New Linke here)
+$ cd sort-visualizer
+$ npm install
+$ npm start
+```
+
+### Learn More
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## App Conventions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The `src` folder contains three subdirectories:
 
-### Analyzing the Bundle Size
+- `algorithms` - Each sorting algorithm is contained in its own file and imports helper functions from the `helpers.js` file, which is also present inside this folder. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `_settings` - This folder contains the the CSS files that only contain CSS custom properties declarations (also known as CSS variables) for the entirety of the app. These files are used to determine the overall look and feel of the application as all components rely upon these variables.
 
-### Making a Progressive Web App
+- `components` - This folder is broken down into AlgoCodeBlocks, AlgoDescription, Chart, Elements and VisualArea subfolders.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - The `AlgoCodeBlock` folder contains the code for each algorith, and we used the package [primsjs](https://www.npmjs.com/package/react-prism) to help us show the code in the proper format.
+  - The `AlgoDescription` folder contains more the overall mechanics of the sorting algorithm and its runtime and space complexity.
+  - The `Chart` folder contains component which shows the bars corresponding to the generate array.
+  - The `Elements` folder contains the smaller subcomponents for the overall visualization area of the app.  Those include the bars, color keys, controls and the progress bar.
+  - The `VisualArea` folder contains the wrapper for the Chart as well as the smaller components in the Elements subfolder.
 
-### Advanced Configuration
+## App Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The design of the app was largely inspired by Google's [Material Design Guidelines](https://material.io/design/).
 
-### Deployment
+The app is responsive, meaning it works across a variety of screen sizes and dimensions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Sort Visualizer](https://i.imgur.com/8gF08Dk.png)
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sort Visualizer is released under the [MIT License](https://choosealicense.com/licenses/mit/)
