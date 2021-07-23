@@ -2,15 +2,13 @@
 
 This is a web app built using React and is used to visualize classic sorting algorithms such as insertion sort, merge sort, quick sort, heap sort, etc.
 
-This app is deployed with Github and can be accessed [here](https://sort-visualizer.ramizrahman.com).
+This app is deployed with Github and can be accessed [here](https://jeewhiz113.github.io/algovisualization/).
 
 ## Purpose
 
 I wish to gain better understanding of React and the classic sorting algorithms.In the end, this project was a great way to achieve both objectives at the same time.
 
 ## Installation
-
-The app is already deployed so you can play around with the final product using this [link](https://sort-visualizer.ramizrahman.com).
 
 If you wish to run this app locally, clone this repo and install the dependencies.
 
