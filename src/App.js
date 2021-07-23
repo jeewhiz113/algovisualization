@@ -83,12 +83,8 @@ function App() {
   }
   const setSortTrue = () => {
     setSelectedSort(true);
-    // setSelectedSearch(false);
   }
-  // const setSearchTrue = () => {
-  //   // setSelectedSearch(true);
-  //   setSelectedSort(false);
-  // }
+
   const generateArray = (size) => {
     const array = Array(size).fill(0).map(() => {
       return Math.floor(Math.random() * 5 * size) + 1;
