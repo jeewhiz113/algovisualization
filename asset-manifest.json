@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/algovisualization/static/css/main.ad72823e.chunk.css",
+    "main.js": "/algovisualization/static/js/main.35a000ce.chunk.js",
+    "main.js.map": "/algovisualization/static/js/main.35a000ce.chunk.js.map",
+    "runtime-main.js": "/algovisualization/static/js/runtime-main.ae39eae8.js",
+    "runtime-main.js.map": "/algovisualization/static/js/runtime-main.ae39eae8.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/algovisualization/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.0627bbae.chunk.js": "/algovisualization/static/js/2.0627bbae.chunk.js",
+    "static/js/2.0627bbae.chunk.js.map": "/algovisualization/static/js/2.0627bbae.chunk.js.map",
+    "static/js/3.4e6fad61.chunk.js": "/algovisualization/static/js/3.4e6fad61.chunk.js",
+    "static/js/3.4e6fad61.chunk.js.map": "/algovisualization/static/js/3.4e6fad61.chunk.js.map",
+    "index.html": "/algovisualization/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/algovisualization/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.ad72823e.chunk.css.map": "/algovisualization/static/css/main.ad72823e.chunk.css.map",
+    "static/js/2.0627bbae.chunk.js.LICENSE.txt": "/algovisualization/static/js/2.0627bbae.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ae39eae8.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.0627bbae.chunk.js",
+    "static/css/main.ad72823e.chunk.css",
+    "static/js/main.35a000ce.chunk.js"
+  ]
+}
