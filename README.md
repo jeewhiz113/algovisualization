@@ -13,7 +13,7 @@ I wish to gain better understanding of React and the classic sorting algorithms.
 If you wish to run this app locally, clone this repo and install the dependencies.
 
 ```
-$ git clone "https://github.com/ramiz-rahman/sort-visualizer.git" (New Linke here)
+$ git clone "https://github.com/jeewhiz113/algovisualization.git"
 $ cd sort-visualizer
 $ npm install
 $ npm start
